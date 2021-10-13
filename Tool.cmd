@@ -16,14 +16,17 @@ if exist %userprofile%\key goto skip
   set /p windows=
     cls
       echo ping %ip% -t -l 65500>>"%temp%\DDOST\run.bat"
-  choice /n /m Show Windows Y/N
+      echo call "%userprofile%\.ddost\data\exitkey.bat>>"%temp%\DDOST\run.bat"
+      echo if "%exit%"=="true" do exit>>"%temp%\DDOST\run.bat"
+      echo Minimize Windows (Y/N):
+  set /p mintf=
     cls
-      if "%errorlevel%"=="1" set mintf=/min
-      if "%errorlevel%"=="2" set mintf=
-      
-pause >nul
+      if "%mintf%"=="Y" set mintf=/min
+      if "%mintf%"=="N" set mintf=
+
 for /l %%A in (1,1,%windows%) do start %mintf% "cmd.exe" "%temp%\DDOST\run.bat"
 echo Press any button to exit
   pause >nul
     del /q "%temp%\DDOST\run.bat"
+    echo set /a exit=true>>"%userprofile%\.ddost\data\exitkey.bat"
     taskkill /im /f cmd.exe
