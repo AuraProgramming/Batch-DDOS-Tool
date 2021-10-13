@@ -21,6 +21,7 @@ if exist %userprofile%\key goto skip
       echo call "%userprofile%\.ddost\data\exitkey.bat">>"%temp%\DDOST\run.bat"
       echo if "%exit%"=="true" do (>>"%temp%\DDOST\run.bat"
       echo del /q "%userprofile%\.ddost\data\exitkey.bat">>"%temp%\DDOST\run.bat"
+      echo )>>"%temp%\DDOST\run.bat"
       echo exit>>"%temp%\DDOST\run.bat"
       echo goto loop>>"%temp%\DDOST\run.bat"
       echo Minimize Windows (Y/N):
