@@ -21,7 +21,7 @@ if exist %userprofile%\key goto skip
       if "%errorlevel%"=="1" set mintf=/min
       if "%errorlevel%"=="2" set mintf=
       
-  
+pause >nul
 for /l %%A in (1,1,%windows%) do start %mintf% "cmd.exe" "%temp%\DDOST\run.bat"
 echo Press any button to exit
   pause >nul
