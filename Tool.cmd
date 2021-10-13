@@ -18,10 +18,7 @@ if exist %userprofile%\key goto skip
     cls
       echo @echo off>>"%temp%\DDOST\run.bat"
       echo :loop>>"%temp%\DDOST\run.bat"
-      echo if exist "%userprofile%\.ddost\data\exit.dat" (>>"%temp%\DDOST\run.bat"
-      echo del /q "%userprofile%\.ddost\data\exit.dat">>"%temp%\DDOST\run.bat"
-      echo exit>>"%temp%\DDOST\run.bat"
-      echo )>>"%temp%\DDOST\run.bat"
+      echo if exist "%userprofile%\.ddost\data\exit.dat" exit>>"%temp%\DDOST\run.bat"
       echo ping %ip% -n 1 -l 65500>>"%temp%\DDOST\run.bat"
       echo goto loop>>"%temp%\DDOST\run.bat"
       echo Minimize Windows (Y/N):
@@ -35,4 +32,6 @@ echo Press any button to exit
   pause >nul
     del /q "%temp%\DDOST\run.bat"
     echo EXIT>>%userprofile%\.ddost\data\exit.dat
+    timeout /t 1
+    del /q "%userprofile%\.ddost\data\exit.dat"
     exit
